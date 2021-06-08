@@ -2,10 +2,10 @@ import PropTypes from 'prop-types';
 import { TagWrapper } from './tags.styles';
 
 const Tag = ({ item, onClick, isSelected }) => {
-  const selected = isSelected(item.label);
+  const selected = isSelected(item.id);
 
   return (
-    <TagWrapper onClick={onClick} value={item.label} selected={selected} >
+    <TagWrapper onClick={onClick} value={item.id} selected={selected} >
       {item.label}
     </TagWrapper>
   );

@@ -1,68 +1,33 @@
 import React from 'react';
-import { useQuery } from 'urql';
 import { getMonth, getYear } from 'date-fns';
-import { BudgetHeader } from '../../components/Budget/index';
+import { BudgetHeader, BudgetStreams } from '../../components/Budget/index';
 import { BudgetWrapper } from '../../components/Budget/budget.styles';
 
-const BudgetQuery = `
-  query ($month: Int!, $year: Int!) {
-    incomes {
-      total
-      incomes {
-        label
-        value
-      }
-    }
-    tags {
-      label
-      id
-    }
-    streams(month: $month, year: $year) {
-      label
-      tag {
-        id
-      }
-      items {
-        label
-      }
-    }
-  }
-`;
+const initState = {
+  month: getMonth(new Date()),
+  year: getYear(new Date())
+}
 
 const Budget = () => {
-  const [date, setDate] = React.useState({ month: getMonth(new Date()), year: getYear(new Date()) });
-  const [results, reexecuteQuery] = useQuery({
-    query: BudgetQuery,
-    variables: { month: date.month, year: date.year }
-  });
+  const [date, setDate] = React.useState(initState);
+  const [tagFilter, setTagFilter] = React.useState();
 
-  const { data, fetching, error } = results;
+  const handleDateChange = React.useCallback((payload) => {
+    setDate(payload);
+  }, []);
 
-  const handleDateChange = (payload) => {
-    if (payload.month !== date.month || payload.year !== date.year) {
-    console.log('handleDateChange', payload);
-    console.log('date', date);
-      reexecuteQuery({ variables: { ...payload } });
-    }
-  };
-
-  const handleFilterChange = (payload) => {
-    console.log('handleFilterChange', payload);
-  }
-
-  if (fetching) return <p>Loading...</p>;
-  if (error) return <p>Oh no... {error.message}</p>;
-
+  const handleFilterChange = React.useCallback((payload) => {
+    const filterIDInts = payload.map(d => parseInt(d));
+    setTagFilter(filterIDInts);
+  }, []);
 
   return (
     <BudgetWrapper>
       <BudgetHeader
-        incomes={data.incomes}
-        tags={data.tags}
         handleDateChange={handleDateChange}
         handleFilterChange={handleFilterChange}
       />
-      <h2>Budget2</h2>
+      <BudgetStreams date={date} filter={tagFilter} />
     </BudgetWrapper>
   );
 }

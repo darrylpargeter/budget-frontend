@@ -14,14 +14,14 @@ const Item = ({ item }) => {
   return (
     <StreamCardItem>
       <p>{item.label}</p>
-      <p>£{item.value}</p>
+      <p>£{item?.value || item.price}</p>
     </StreamCardItem>
   );
 };
 
-const StreamCard = ({ data, title, route }) => {
+const StreamCard = ({ data, title, dataKey, length, route }) => {
   const [isOpen, setIsOpen] = React.useState(false);
-  const totalStreams = `${data.incomes.length} ${title}`;
+  const totalStreams = `${length} ${title}`;
   const totalValue = `£${data.total}`;
 
   const handleOnClick = () => {
@@ -35,7 +35,7 @@ const StreamCard = ({ data, title, route }) => {
       </StreamCardTotalItems>
       <StreamCardTotal>{totalValue}</StreamCardTotal>
       {isOpen && (
-        <ListItems items={data[title.toLowerCase()]} keyPrefix={title}>
+        <ListItems items={data[dataKey.toLowerCase()]} keyPrefix={title}>
           <Item />
         </ListItems>
       )}
@@ -51,6 +51,8 @@ const StreamCard = ({ data, title, route }) => {
 StreamCard.propTypes = {
   data: PropTypes.object,
   title: PropTypes.string,
+  dataKey: PropTypes.string,
+  length: PropTypes.number,
   route: PropTypes.string,
 }
 

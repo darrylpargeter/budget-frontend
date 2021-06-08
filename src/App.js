@@ -21,6 +21,7 @@ const Layout = styled.div`
   grid-template-columns: 1fr;
   max-height: 100vh;
   height: 100vh;
+  max-width: 100vw;
   width: 100vw;
 `;
 

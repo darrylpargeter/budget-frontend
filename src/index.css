@@ -1,7 +1,8 @@
 :root {
   --third-dark-background: #ededed;
   --default-font: #000;
-  --secondary-font-colour: #C4C4C4;
+  --primary-font-colour: #1c2833;
+  --secondary-font-colour: #939393;
 
 }
 
@@ -32,6 +33,7 @@ body, h1, h2, h3, h4, h5, h6, p, ol, ul {
   margin: 0;
   padding: 0;
   font-weight: normal;
+  color: var(--primary-font-colour);
 }
 
 ol, ul {
