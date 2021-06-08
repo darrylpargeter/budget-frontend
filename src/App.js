@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+import { createClient, Provider } from 'urql';
+import styled from "styled-components"
+
+import Content from './containers/Content';
+
+// Components
+import Nav from './containers/Nav';
+
+const GRAPHQL_URL = 'http://localhost:8000/graphql';
+const client = createClient({
+  url: GRAPHQL_URL,
+});
+
+
+const Layout = styled.div`
+  display: grid;
+  grid-template-rows: auto 1fr;
+  grid-template-columns: 1fr;
+  max-height: 100vh;
+  height: 100vh;
+  width: 100vw;
+`;
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Provider value={client}>
+      <Layout>
+        <Router>
+          <Nav />
+          <Content />
+        </Router>
+      </Layout>
+    </ Provider>
   );
 }
 
