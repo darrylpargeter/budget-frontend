@@ -10,7 +10,7 @@ import { format, addMonths, subMonths, getMonth, getYear } from 'date-fns';
 
 
 const TODAYDATEFORMAT = 'EEEE do MMM';
-const MONTHDATEFORMAT = 'MMMM y';
+const MONTHDATEFORMAT = 'MMM y';
 
 const DatePicker = ({ onDateChange }) => {
   const [date, setDate] = React.useState(new Date());

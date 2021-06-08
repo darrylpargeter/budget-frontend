@@ -22,7 +22,7 @@ const Header = ({
 }) => {
   return (
     <BudgetHeaderLayout>
-      <StreamCard data={incomes} title="Incomes" />
+      <StreamCard data={incomes} title="Incomes" route="incomes" />
       <DatePicker onDateChange={handleDateChange} />
       <OverviewCard>OverviewCard Placeholder</OverviewCard>
       <TagFilter items={tags} onFilterChange={handleFilterChange} />

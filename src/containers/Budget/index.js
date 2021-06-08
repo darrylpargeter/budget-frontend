@@ -1,9 +1,11 @@
+import React from 'react';
 import { useQuery } from 'urql';
+import { getMonth, getYear } from 'date-fns';
 import { BudgetHeader } from '../../components/Budget/index';
 import { BudgetWrapper } from '../../components/Budget/budget.styles';
 
 const BudgetQuery = `
-  query {
+  query ($month: Int!, $year: Int!) {
     incomes {
       total
       incomes {
@@ -13,19 +15,35 @@ const BudgetQuery = `
     }
     tags {
       label
+      id
+    }
+    streams(month: $month, year: $year) {
+      label
+      tag {
+        id
+      }
+      items {
+        label
+      }
     }
   }
 `;
 
 const Budget = () => {
-  const [results] = useQuery({
+  const [date, setDate] = React.useState({ month: getMonth(new Date()), year: getYear(new Date()) });
+  const [results, reexecuteQuery] = useQuery({
     query: BudgetQuery,
+    variables: { month: date.month, year: date.year }
   });
 
   const { data, fetching, error } = results;
 
   const handleDateChange = (payload) => {
+    if (payload.month !== date.month || payload.year !== date.year) {
     console.log('handleDateChange', payload);
+    console.log('date', date);
+      reexecuteQuery({ variables: { ...payload } });
+    }
   };
 
   const handleFilterChange = (payload) => {
