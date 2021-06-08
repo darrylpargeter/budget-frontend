@@ -1,25 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'urql';
+import { StreamQuery } from '../../querys/index';
 import StreamCard from '../StreamCard/index';
 import ListItems from '../ListItems/index';
 import { BudgetStreamsWrapper } from './budget.styles';
-
-const StreamQuery = `
-  query ($month: Int!, $year: Int!, $filter: [Int]) {
-    streams(month: $month, year: $year, filter: $filter) {
-      label
-      total
-      tag {
-        id
-      }
-      items {
-        label
-        price(month: $month, year: $year)
-      }
-    }
-  }
-`;
 
 const BudgetStreams = ({ date, filter }) => {
   const variables = React.useMemo(() => ({
@@ -38,18 +23,19 @@ const BudgetStreams = ({ date, filter }) => {
   if (fetching) return <p>Loading...</p>;
   if (error) return <p>Oh no... {error.message}</p>;
 
+  const numberOfRows = Math.ceil(data.streams.length / 4);
+
   return (
-    <BudgetStreamsWrapper>
+    <BudgetStreamsWrapper rows={numberOfRows}>
       {
         data.streams.map((d, idx) => (
-          <div>
+          <div key={`streams-${idx}`}>
             <StreamCard
               data={d} 
               title={d.label}
               length={d.items.length}
               route="streams"
               dataKey="items"
-              key={`stream-${idx}`}
             />
           </div>
         ))

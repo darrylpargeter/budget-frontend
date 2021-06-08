@@ -4,7 +4,8 @@ const NavWrapper = styled.nav`
   display: flex;
   justify-content: flex-end;
   gap: 8px;
-  margin: 16px;
+  padding: 16px;
+  background: var(--primary-colour);
 `;
 
 export {

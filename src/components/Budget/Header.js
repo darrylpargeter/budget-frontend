@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useQuery } from 'urql';
+import { BudgetQuery } from '../../querys/index';
 
 import { BudgetHeaderLayout } from './budget.styles';
 import DatePicker from '../DatePicker/index';
@@ -11,23 +12,6 @@ import styled from "styled-components"
 const OverviewCard = styled.h4`
   grid-area: overview;
 `;
-
-const BudgetQuery = `
-  query {
-    incomes {
-      total
-      incomes {
-        label
-        value
-      }
-    }
-    tags {
-      label
-      id
-    }
-  }
-`;
-   
 
 const Header = ({ 
   handleDateChange,

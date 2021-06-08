@@ -1,8 +1,14 @@
 :root {
   --third-dark-background: #ededed;
   --default-font: #000;
-  --primary-font-colour: #1c2833;
-  --secondary-font-colour: #939393;
+  --primary-colour: #0e5c46;
+  --secondary-colour: #ff8a00;
+
+  --primary-font-colour: #fdfdfd;
+  --secondary-font-colour: #75b6a5;
+  --third-font-colour: #262e36;
+
+  --offwhite: #939393;
 
 }
 
@@ -45,10 +51,7 @@ a {
   color: var(--default-font);
 }
 
-a:visited {
-}
-
-.active-nav {
+.active-nav h4 {
   display: inherit;
-  color: var(--third-dark-background);
+  color: var(--secondary-colour);
 }

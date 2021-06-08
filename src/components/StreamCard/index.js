@@ -29,7 +29,10 @@ const StreamCard = ({ data, title, dataKey, length, route }) => {
   }
 
   return (
-    <StreamCardWrapper area={title} onClick={handleOnClick}>
+    <StreamCardWrapper
+      area={title}
+      onClick={handleOnClick}
+    >
       <StreamCardTotalItems>
         {totalStreams}
       </StreamCardTotalItems>

@@ -7,11 +7,11 @@ const Tags = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
+  color: var(--primary-font-colour);
 `;
 
 const TagWrapper = styled(Button)`
-  border-radius: ${props => props.selected ? '20%' : 0 };
-  background: ${props => props.selected ? '#ededed' : 'none' };
+  color: ${props => props.selected ? 'var(--primary-font-colour)' : 'var(--secondary-font-colour)'};
 `;
 
 export {

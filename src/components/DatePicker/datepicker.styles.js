@@ -24,6 +24,16 @@ const Today = styled(Button)`
 const Pickers = styled(Button)`
   justify-self: center;
   font-size: 64px;
+  color: var(--secondary-font-colour);
+  transition: color .3s ease-in-out;
+  transition: transform .3s ease-in-out;
+
+  :hover {
+    color: var(--primary-font-colour);
+    transform: scale(1.1);
+    transition: color .3s ease-in-out;
+    transition: transform .3s ease-in-out;
+  }
 `;
 
 const Month = styled.h1`
