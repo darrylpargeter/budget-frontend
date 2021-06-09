@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { useQuery } from 'urql';
 import { StreamQuery } from '../../querys/index';
-import StreamCard from '../StreamCard/index';
-import ListItems from '../ListItems/index';
+import StreamCard from '../../components/StreamCard/index';
+// import ListItems from '../ListItems/index';
 import { BudgetStreamsWrapper } from './budget.styles';
 
 const BudgetStreams = ({ date, filter }) => {

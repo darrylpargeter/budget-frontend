@@ -1,7 +1,8 @@
 import React from 'react';
 import { getMonth, getYear } from 'date-fns';
-import { BudgetHeader, BudgetStreams } from '../../components/Budget/index';
-import { BudgetWrapper } from '../../components/Budget/budget.styles';
+import BudgetStreams from './BudgetStreams';
+import BudgetHeader from './BudgetHeader';
+import { BudgetWrapper } from './budget.styles';
 
 const initState = {
   month: getMonth(new Date()),

@@ -3,9 +3,9 @@ import { useQuery } from 'urql';
 import { BudgetQuery } from '../../querys/index';
 
 import { BudgetHeaderLayout } from './budget.styles';
-import DatePicker from '../DatePicker/index';
-import TagFilter from '../TagFilter/index';
-import StreamCard from '../StreamCard/index';
+import DatePicker from '../../components/DatePicker/index';
+import TagFilter from '../../components/TagFilter/index';
+import StreamCard from '../../components/StreamCard/index';
 
 import styled from "styled-components"
 
