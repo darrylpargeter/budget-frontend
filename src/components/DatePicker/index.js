@@ -31,9 +31,9 @@ const DatePicker = ({ onDateChange }) => {
 
   return (
     <DateWrapper>
-      <Pickers onClick={subMonth}>{"<"}</Pickers>
+      <Pickers data-testid="sub-month" onClick={subMonth}>{"<"}</Pickers>
       <Month>{monthHeader}</Month>
-      <Pickers onClick={addMonth}>{">"}</Pickers>
+      <Pickers data-testid="add-month" onClick={addMonth}>{">"}</Pickers>
       <Today onClick={resetDate}>{todayHeader}</Today>
     </DateWrapper>
   );

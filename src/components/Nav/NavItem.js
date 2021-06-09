@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 const NavItem = ({ item: { label, route } }) => {
   return (
-    <NavLink to={route} activeClassName="active-nav">
+    <NavLink to={route} activeClassName="active-nav" data-testid={label}>
       <h4>{label}</h4>
     </NavLink>
   );

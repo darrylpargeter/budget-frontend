@@ -32,17 +32,18 @@ const StreamCard = ({ data, title, dataKey, length, route }) => {
     <StreamCardWrapper
       area={title}
       onClick={handleOnClick}
+      data-testid="stream-wrapper"
     >
-      <StreamCardTotalItems>
+      <StreamCardTotalItems data-testid="total-streams">
         {totalStreams}
       </StreamCardTotalItems>
-      <StreamCardTotal>{totalValue}</StreamCardTotal>
+      <StreamCardTotal data-testid="stream-total">{totalValue}</StreamCardTotal>
       {isOpen && (
         <ListItems items={data[dataKey.toLowerCase()]} keyPrefix={title}>
           <Item />
         </ListItems>
       )}
-      <StreamLink>
+      <StreamLink data-testid="stream-link">
         <Link to={`/${route}`}>
           Add {title}
         </Link>
